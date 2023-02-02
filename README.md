@@ -9,3 +9,5 @@ clean-webpack-plugin, core-js, and regenerator-runtime.
 preferably use latest version of packages
 
 In webpack.config.js the devServer option content base is not availabe for webpack-dev-server version 5+
+
+Add your API Key to the google script.
