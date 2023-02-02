@@ -13,5 +13,10 @@ class Map {
       center: this.coordinates,
       zoom: 16,
     });
+
+    new google.maps.Marker({
+        position: this.coordinates,
+        map: map
+    });
   }
 }
