@@ -29,8 +29,8 @@ class PlaceFinder {
         modal.hide();
         console.log(successResult);
         const coordinates = {
-          lat: successResult.coords.latitude + Math.random() * 50,
-          lng: successResult.coords.longitude + Math.random() * 50,
+          lat: successResult.coords.latitude + Math.random() * 20,
+          lng: successResult.coords.longitude + Math.random() * 20,
         };
         // console.log(coordinates);
         this.selectPlace(coordinates);
@@ -44,7 +44,20 @@ class PlaceFinder {
     );
   }
 
-  findAddressHandler() {}
+  findAddressHandler(e) {
+    e.preventDefault();
+    const address = e.target.querySelector("input").value;
+    if (!address || address.trim() === 0) {
+      alert("Invalid address entered - please try again");
+      return;
+    }
+    const modal = new Modal(
+      "loading-modal-content",
+      "Loading location - please wait"
+    );
+    modal.show();
+    
+  }
 }
 
-const place = new PlaceFinder();
+const placeFinder = new PlaceFinder();
