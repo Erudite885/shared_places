@@ -10,8 +10,25 @@ class PlaceFinder {
     this.shareBtn = document.getElementById("share-btn");
 
     locateUserBtn.addEventListener("click", this.locateUserHandler.bind(this));
-    // this.shareBtn.addEventListener("click", this.shareHandler.bind(this));
+    this.shareBtn.addEventListener("click", this.sharePlaceHandler.bind(this));
     addressForm.addEventListener("submit", this.findAddressHandler.bind(this));
+  }
+
+  sharePlaceHandler() {
+    const sharedLinkInputEl = document.getElementById("share-link");
+    if (!navigator.clipboard) {
+      sharedLinkInputEl.select();
+      return;
+    }
+    navigator.clipboard
+      .writeText(sharedLinkInputEl.value)
+      .then(() => {
+        alert("copied to clipboard");
+      })
+      .catch((err) => {
+        console.error(err);
+        sharedLinkInputEl.select();
+      });
   }
 
   selectPlace(coordinates, address) {
